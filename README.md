@@ -8,12 +8,13 @@ This project demonstrates the design, automation, and deployment of a containeri
 
 ### 🛠️ Key Technical Skills
 
-| Technology          | Focus             | Skill Demonstrated                                                |
-| :------------------ | :---------------- | :---------------------------------------------------------------- |
-| **Apache Airflow**  | Orchestration     | **Workflow Automation** (`churn_pipeline_dag.py`) and scheduling. |
-| **Podman / Docker** | Containerization  | **Image Optimization** and multi-container execution (`-slim`, `:Z` volumes). |
-| **Linux / Compose** | Infrastructure    | **Service Configuration** (`.yml`), networking, and shell scripting. |
-
+| Technology | Focus | Skill Demonstrated |
+| :--- | :--- | :--- |
+| **Apache Airflow** | **Workflow Orchestration** | **Microservices Deployment** (API + Airflow). Automated ETL pipeline and resolved dependency crashes via **explicit health checks**. |
+| **Podman / Docker** | **Containerization** | Engineered **Container-in-Container** execution and complex **Multi-Container Architecture** (`Compose`). Managed **Container Networking & Socket Mounting**. |
+| **Linux / RHEL VM** | **Infrastructure & Storage** | Solved disk space exhaustion by leveraging **LVM** (Logical Volume Manager) to **extend the root (/) partition** without downtime. |
+| **Linux Security** | **Authorization / SELinux** | Applied **Principle of Least Privilege** by configuring **SELinux** and file ownership/permissions to grant the Airflow user minimum necessary authority. |
+| **Networking & API** | **Testing/Debugging** | Diagnosed and resolved container networking issues (empty replies, crashes) by successfully routing **cURL** tests to the correct container instance IP. |
 ---
 
 ### ⚙️ Pipeline Flow

@@ -71,6 +71,7 @@ This project delivers a fully automated and reliable system:
 * **Monitoring Ready:** Includes scripts to track prediction results and generate performance reports (dashboard ready).
 
 **Dashboard screenshot:**
+
 ![Dashboard screenshot](https://github.com/Moka1302/churn-prediction-pipeline/blob/main/monitoring/logs/dashboard.png)
 
 

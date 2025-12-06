@@ -69,7 +69,8 @@ This project delivers a fully automated and reliable system:
 * **Production API:** A containerized **REST API** ready for real-time inference.
 * **Persistent Artifacts:** Generated predictions, metrics, and the final model are saved outside the containers for persistence and monitoring.
 * **Monitoring Ready:** Includes scripts to track prediction results and generate performance reports (dashboard ready).
-  **Dashboard screenshot:**
+
+**Dashboard screenshot:**
 ![Dashboard screenshot](https://github.com/Moka1302/churn-prediction-pipeline/blob/main/monitoring/logs/dashboard.png)
 
 

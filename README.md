@@ -27,6 +27,7 @@ The entire workflow is automated via an Airflow DAG that executes stages within 
 ---
 
 ### 📂 Repository Structure (Source Code)
+```
 .
 ├── README.md                     # Project overview, technical summary, and skills highlighted.
 ├── airflow/
@@ -38,7 +39,7 @@ The entire workflow is automated via an Airflow DAG that executes stages within 
 │   ├── app.py                     # API service entry point (Flask/FastAPI).
 │   ├── model_infer.py            # Model loading and prediction logic for the API.
 │   └── prediction_logger.py      # Script to log API requests/responses for monitoring.
-├── data/                         # Input data directory 
+├── data/                         # Input data directory
 ├── monitoring/
 │   ├── generate_dahsboard.py     # Python script to generate business reports/dashboards.
 │   ├── test_api_claude.sh        # Linux/cURL testing script (Functional testing).
@@ -56,7 +57,7 @@ The entire workflow is automated via an Airflow DAG that executes stages within 
         ├── requirements.txt           # Python dependencies for the ML execution stage.
         ├── train-infer-evaluateDockerfile # Dockerfile for Training/Inference container.
         └── train_model.py             # Python script for model training and saving.
-    
+```    
 ---
 
 ### 🎁 Deliverables & Outputs

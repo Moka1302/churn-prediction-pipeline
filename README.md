@@ -1,4 +1,4 @@
-#🚀 AI-Enhanced Data Pipeline for Customer Churn Prediction
+# 🚀 AI-Enhanced Data Pipeline for Customer Churn Prediction
 
 ## Project Overview:
 Create a data pipeline that integrates AI models to predict customer churn. Use Python for data processing, SQL for feature extraction, and deploy a pre-trained AI model for prediction.

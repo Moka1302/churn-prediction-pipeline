@@ -14,7 +14,7 @@ This project demonstrates the design, automation, and deployment of a containeri
 | **Podman / Docker** | **Containerization** | Engineered **Container-in-Container** execution and complex **Multi-Container Architecture** (`Compose`). Managed **Container Networking & Socket Mounting**. |
 | **Linux / RHEL VM** | **Infrastructure & Storage** | Solved disk space exhaustion by leveraging **LVM** (Logical Volume Manager) to **extend the root (/) partition** without downtime. |
 | **Linux Security** | **Authorization / SELinux** | Applied **Principle of Least Privilege** by configuring **SELinux** and file ownership/permissions to grant the Airflow user minimum necessary authority. |
-| **Networking & API** | **Testing/Debugging** | Diagnosed and resolved container networking issues (empty replies, crashes) by successfully routing **cURL** tests to the correct container instance IP. |
+| **Networking & API** | **Testing/Debugging** | Diagnosed and resolved container networking issues like empty replies and crashes. |
 ---
 
 ### ⚙️ Pipeline Flow
@@ -42,7 +42,7 @@ The entire workflow is automated via an Airflow DAG that executes stages within 
 │   └── prediction_logger.py      # Script to log API requests/responses for monitoring.
 ├── data/                         # Input data directory
 ├── monitoring/
-│   ├── generate_dahsboard.py     # Python script to generate business reports/dashboards.
+│   ├── generate_dashboard.py     # Python script to generate business reports/dashboards.
 │   ├── test_api.sh        # Linux/cURL testing script (Functional testing).
 │   └── view_dashboard.py         # Script to load and display monitoring output.
 └── pipeline/

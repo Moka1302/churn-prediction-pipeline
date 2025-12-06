@@ -42,7 +42,7 @@ The entire workflow is automated via an Airflow DAG that executes stages within 
 ├── data/                         # Input data directory
 ├── monitoring/
 │   ├── generate_dahsboard.py     # Python script to generate business reports/dashboards.
-│   ├── test_api_claude.sh        # Linux/cURL testing script (Functional testing).
+│   ├── test_api.sh        # Linux/cURL testing script (Functional testing).
 │   └── view_dashboard.py         # Script to load and display monitoring output.
 └── pipeline/
     ├── extract-preprocess/

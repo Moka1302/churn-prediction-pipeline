@@ -1,0 +1,8 @@
+{"timestamp": "2025-12-05T10:16:03.456934", "total_predictions": 5, "avg_churn_probability": 0.472, "high_risk_customers": 2, "medium_risk_customers": 1, "low_risk_customers": 2, "high_risk_percentage": 40.0}
+{"timestamp": "2025-12-05T10:16:40.824715", "total_predictions": 5, "avg_churn_probability": 0.472, "high_risk_customers": 2, "medium_risk_customers": 1, "low_risk_customers": 2, "high_risk_percentage": 40.0}
+{"timestamp": "2025-12-05T10:16:41.874738", "total_predictions": 5, "avg_churn_probability": 0.472, "high_risk_customers": 2, "medium_risk_customers": 1, "low_risk_customers": 2, "high_risk_percentage": 40.0}
+{"timestamp": "2025-12-05T10:19:03.927721", "total_predictions": 5, "avg_churn_probability": 0.472, "high_risk_customers": 2, "medium_risk_customers": 1, "low_risk_customers": 2, "high_risk_percentage": 40.0}
+{"timestamp": "2025-12-05T10:19:04.950891", "total_predictions": 5, "avg_churn_probability": 0.472, "high_risk_customers": 2, "medium_risk_customers": 1, "low_risk_customers": 2, "high_risk_percentage": 40.0}
+{"timestamp": "2025-12-06T07:09:21.143210", "total_predictions": 99, "avg_churn_probability": 0.2993, "high_risk_customers": 25, "medium_risk_customers": 2, "low_risk_customers": 72, "high_risk_percentage": 25.25}
+{"timestamp": "2025-12-06T07:10:03.133154", "total_predictions": 99, "avg_churn_probability": 0.2993, "high_risk_customers": 25, "medium_risk_customers": 2, "low_risk_customers": 72, "high_risk_percentage": 25.25}
+{"timestamp": "2025-12-06T07:10:04.180984", "total_predictions": 99, "avg_churn_probability": 0.2993, "high_risk_customers": 25, "medium_risk_customers": 2, "low_risk_customers": 72, "high_risk_percentage": 25.25}

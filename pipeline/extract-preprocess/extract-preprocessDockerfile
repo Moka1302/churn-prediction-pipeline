@@ -1,0 +1,25 @@
+# Use a small Python base. Works with podman or docker.
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# system deps (sqlite is included in Python stdlib; keep apt minimal)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+ && rm -rf /var/lib/apt/lists/*
+
+
+# Copy app files
+COPY load_and_extract.py preprocess_features.py feature_extract.sql requirements.txt /app/
+
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir scikit-learn joblib
+
+
+# default command: run extraction on /data/data.csv and write /out/features.csv
+# You can override at runtime to mount input/output locations.
+CMD ["python","load_and_extract.py","/data/data.csv","/out/features.csv","/app/feature_extract.sql"]
+
+

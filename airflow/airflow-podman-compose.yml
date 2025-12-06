@@ -1,0 +1,88 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: docker.io/library/postgres:13
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "airflow"]
+      interval: 5s
+      retries: 5
+    restart: always
+
+  airflow-webserver:
+    image: docker.io/apache/airflow:2.8.1-python3.11
+    user: "50000:0"
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__FERNET_KEY: ''
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth'
+      #_PIP_ADDITIONAL_REQUIREMENTS: 'scikit-learn pandas'
+      HOST_DATA_DIR: /home/admin/AI-project/tmp/data
+      HOST_OUT_DIR: /home/admin/AI-project/tmp/out
+    volumes:
+      - /run/user/1000/podman/podman.sock:/var/run/docker.sock:z
+      - ./dags:/opt/airflow/dags:z
+      - ./logs:/opt/airflow/logs:z
+      - ${HOST_DATA_DIR:-./data}:/opt/airflow/data:z
+      - ${HOST_OUT_DIR:-./out}:/opt/airflow/out:z
+      - ${HOST_DATA_DIR:-./data}:${HOST_DATA_DIR:-./data}:z
+      - ${HOST_OUT_DIR:-./out}:${HOST_OUT_DIR:-./out}:z
+    ports:
+      - "8080:8080"
+    command: >
+      bash -c "
+        airflow db init &&
+        airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin &&
+        airflow webserver
+      "
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: always
+
+  airflow-scheduler:
+    image: docker.io/apache/airflow:2.8.1-python3.11
+    user: "50000:0"
+    depends_on:
+      - postgres
+      - airflow-webserver
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__FERNET_KEY: ''
+      AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+      #_PIP_ADDITIONAL_REQUIREMENTS: 'scikit-learn pandas'
+      HOST_DATA_DIR: /home/admin/AI-project/tmp/data
+      HOST_OUT_DIR: /home/admin/AI-project/tmp/out
+    volumes:
+      - /run/user/1000/podman/podman.sock:/var/run/docker.sock:z
+      - ./dags:/opt/airflow/dags:z
+      - ./logs:/opt/airflow/logs:z
+      - ${HOST_DATA_DIR:-./data}:/opt/airflow/data:z
+      - ${HOST_OUT_DIR:-./out}:/opt/airflow/out:z
+      - ${HOST_DATA_DIR:-./data}:${HOST_DATA_DIR:-./data}:z
+      - ${HOST_OUT_DIR:-./out}:${HOST_OUT_DIR:-./out}:z
+    command: scheduler
+    healthcheck:
+      test: ["CMD-SHELL", 'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: always
+
+volumes:
+  postgres-db-volume:

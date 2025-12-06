@@ -1,0 +1,16 @@
+# Use minimal Python base
+FROM python:3.10-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy Milestone 2 scripts
+COPY train_model.py model_infer.py evaluate_predictions.py ../requirements.txt /app/
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt && \
+    pip install --no-cache-dir scikit-learn joblib xgboost pandas
+
+# Default command is bash to allow flexible execution
+CMD ["bash"]
+

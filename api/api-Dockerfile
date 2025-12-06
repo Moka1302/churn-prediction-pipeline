@@ -1,0 +1,20 @@
+# Use small Python base
+FROM python:3.10-slim
+
+# Set workdir
+WORKDIR /app
+
+# Copy only the API and model inference code
+COPY app.py model_infer.py prediction_logger.py /app/
+COPY model.joblib /app/model/
+
+# Install dependencies
+RUN pip install --no-cache-dir flask pandas scikit-learn joblib
+
+# Expose Flask port
+EXPOSE 5000
+
+# Default command
+CMD ["python", "app.py"]
+
+
